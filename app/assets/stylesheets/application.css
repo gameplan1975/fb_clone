@@ -35,3 +35,13 @@ body{
 .main-top{
     margin: 10px;
 }
+.index-window{
+    background-color: white;
+    width: 80%;
+    margin: 20px;
+    padding:10px;
+}
+.flash{
+    color:blue;
+    font-size: 16px;
+}

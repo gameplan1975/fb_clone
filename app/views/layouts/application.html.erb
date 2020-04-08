@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Facelook</title>
+    <title>Fakelook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,11 +9,11 @@
   </head>
   <body>
     <header>
-    <div class ="header-logo"><%= link_to("Facelook","/") %></div>
+    <div class ="header-logo"><%= link_to("Fakelook","/") %></div>
     <ul class ="header-menus">
       <li>ユーザーネーム</li>
-      <li><%= link_to("つぶやく","/blogs/new") %></li>
-      <li><%= link_to("投稿一覧","/blogs") %></li>
+      <li><%= link_to("投稿するで","/blogs/new") %></li>
+      <li><%= link_to("投稿見るで","/blogs") %></li>
       <li>Log in</li>
       <li>log out</li>
       <li><%= link_to("へるぷ","/homes/help") %></li>

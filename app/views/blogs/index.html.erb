@@ -1,0 +1,21 @@
+<div class="main-top">
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+<h1>投稿見てみよか</h1>
+
+<% @blogs.reverse_each do |blog| %>
+    <div class="index-window">
+        <p><%= blog.blog_image %></p>
+        <p>:<%= blog.content %></p>
+        <p style="color:gray; text-align: right" ><%= blog.updated_at.strftime("%Y-%m-%d %H:%M") %>
+        <div style="text-align: right; margin-right:10px">
+            <%= link_to "確認するで", blog_path(blog.id)  %>
+            <%= link_to "編集するで", edit_blog_path(blog.id)  %>
+            <%= link_to 'ほかすで', blog_path(blog.id), method: :delete, data: { confirm: 'ほかしても、ええのん？' } %>
+        </div>
+    </div>
+<% end %>
+</div>
