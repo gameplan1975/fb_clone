@@ -8,7 +8,7 @@
 <%= form_with(model: @blog, local: true) do |form| %>
     <div>
         <%= form.label :画像貼ってな %><br>
-        <%= form.text_field :blog_image %>
+        <%= form.file_field :blog_image %>
     </div><br>
     <div>
         <%= form.label :コメントしてな %><br>

@@ -14,11 +14,21 @@
       <li>ユーザーネーム</li>
       <li><%= link_to("投稿するで","/blogs/new") %></li>
       <li><%= link_to("投稿見るで","/blogs") %></li>
-      <li>Log in</li>
-      <li>log out</li>
+      <% if logged_in? %>
+        <li><%= link_to "自己紹介", user_path(current_user.id) %></li>
+        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+      <% else %>
+        <li><%= link_to "新規登録", new_user_path %></li>
+        <li><%= link_to "ログイン", new_session_path %></li>
+      <% end %>
       <li><%= link_to("へるぷ","/homes/help") %></li>
     </ul>
   </header>
+      <body>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      
     <%= yield %>
   </body>
 </html>

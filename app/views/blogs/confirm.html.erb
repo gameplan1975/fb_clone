@@ -1,13 +1,9 @@
 <div class="main-top">
     <h3>これで、ええのん？</h3>
-    <div class="index-window">
-        <%= form_with(model: @blog, local: true, url:blogs_path) do |form| %>
-            <%= form.hidden_field :blog_image %>
-            <%= form.hidden_field :content %>
-            <p><%= @blog.blog_image %></p>
-            <p>本文:<%= @blog.content %></p>
-            <%= form.submit  "ええで" %>
-            <%= form.submit "やめとく" , name: 'back' %>
-        <% end %>
-    </div>
+    <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+    <%= image_tag(@blog.blog_image.url) if @blog.blog_image && @blog.blog_image.url %>
+    <%= form.hidden_field :image_cache %>
+    <p><%= form.field:@blog.content %><
+    <%= form.submit "投稿する" %>
+    <% end %>
 </div>

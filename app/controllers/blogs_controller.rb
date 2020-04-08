@@ -1,6 +1,10 @@
 class BlogsController < ApplicationController
     def new
-        @user = User.new
+        if params[:back]
+            @blog = Blog.new(blog_params)
+          else
+            @blog = Blog.new
+          end
     end
 
     def create
@@ -8,8 +12,7 @@ class BlogsController < ApplicationController
             render :new
         else
             Blog.create(blog_image: params[:blog][:blog_image], content: params[:blog][:content])
-            #redirect_to "/blogs/new"
-            redirect_to new_blog_path
+             redirect_to new_blog_path
         end
     end
 
@@ -37,15 +40,16 @@ class BlogsController < ApplicationController
     end
 
     def show
-        @blog = Blog.find(params[:id]) 
+        @blog = Blog.find(blog_params) 
     end
 
     def confirm
-        @blog = Blog.new(params[:id])
+        @blog = Blog.new(blog_params)
     end
 
     private
     def blog_params
-      params.require(:blog).permit(:blog_image, :content)
+      params.require(:blog).permit(:blog_image, :content, :image_cache)
     end
+
 end

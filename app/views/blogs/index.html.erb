@@ -5,10 +5,9 @@
       </div>
     <% end %>
 <h1>投稿見てみよか</h1>
-
 <% @blogs.reverse_each do |blog| %>
     <div class="index-window">
-        <p><%= blog.blog_image %></p>
+      <p><%= image_tag blog.blog_image.url %></P>
         <p>:<%= blog.content %></p>
         <p style="color:gray; text-align: right" ><%= blog.updated_at.strftime("%Y-%m-%d %H:%M") %>
         <div style="text-align: right; margin-right:10px">
