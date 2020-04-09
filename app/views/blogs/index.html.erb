@@ -9,6 +9,7 @@
     <div class="index-window">
       <p><%= image_tag blog.blog_image.url %></P>
         <p>:<%= blog.content %></p>
+        <p><%= blog.user_id %></p>
         <p style="color:gray; text-align: right" ><%= blog.updated_at.strftime("%Y-%m-%d %H:%M") %>
         <div style="text-align: right; margin-right:10px">
             <%= link_to "確認するで", blog_path(blog.id)  %>

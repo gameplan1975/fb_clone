@@ -11,7 +11,9 @@
     <header>
     <div class ="header-logo"><%= link_to("Fakelook","/") %></div>
     <ul class ="header-menus">
-      <li>ユーザーネーム</li>
+      <% if logged_in? %>
+        <li><%= current_user.name %></li>
+      <% end %>
       <li><%= link_to("投稿するで","/blogs/new") %></li>
       <li><%= link_to("投稿見るで","/blogs") %></li>
       <% if logged_in? %>

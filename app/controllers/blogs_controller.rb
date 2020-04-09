@@ -12,7 +12,7 @@ class BlogsController < ApplicationController
             render :new
         else
             Blog.create(blog_image: params[:blog][:blog_image], content: params[:blog][:content])
-             redirect_to new_blog_path
+            redirect_to new_blog_path
         end
     end
 
@@ -44,12 +44,12 @@ class BlogsController < ApplicationController
     end
 
     def confirm
-        @blog = Blog.new(blog_params)
+        @blog = current_user.blogs.build(blog_params)
+        render :new if @blog.invalid?
     end
 
     private
     def blog_params
-      params.require(:blog).permit(:blog_image, :content, :image_cache)
+      params.require(:blog).permit(:blog_image, :content, :image_cache, :user_id)
     end
-
 end
