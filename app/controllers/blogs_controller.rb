@@ -11,13 +11,15 @@ class BlogsController < ApplicationController
         if params[:back]
             render :new
         else
-            Blog.create(blog_image: params[:blog][:blog_image], content: params[:blog][:content])
+            Blog.create(blog_image: params[:blog][:blog_image], content: params[:blog][:content], 
+            user_id: current_user.id)
             redirect_to new_blog_path
         end
     end
 
     def index
-        @blogs = Blog.all 
+        @blogs = Blog.all
+        @user = User.all
     end
 
     def update
@@ -41,11 +43,11 @@ class BlogsController < ApplicationController
 
     def show
         @blog = Blog.find(blog_params) 
+        @user = User.find(id:blog.user_id)
     end
 
     def confirm
-        @blog = current_user.blogs.build(blog_params)
-        render :new if @blog.invalid?
+        @blog = Blog.new(blog_params)
     end
 
     private

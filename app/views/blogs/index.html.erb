@@ -1,9 +1,4 @@
 <div class="main-top">
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
 <h1>投稿見てみよか</h1>
 <% @blogs.reverse_each do |blog| %>
     <div class="index-window">

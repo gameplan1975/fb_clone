@@ -26,11 +26,12 @@
       <li><%= link_to("へるぷ","/homes/help") %></li>
     </ul>
   </header>
-      <body>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      
+      <% if flash[:notice] %>
+      <div class="flash">
+        <br>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
