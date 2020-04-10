@@ -2,9 +2,9 @@ class BlogsController < ApplicationController
     def new
         if params[:back]
             @blog = Blog.new(blog_params)
-          else
+        else
             @blog = Blog.new
-          end
+        end
     end
 
     def create
@@ -13,13 +13,12 @@ class BlogsController < ApplicationController
         else
             Blog.create(blog_image: params[:blog][:blog_image], content: params[:blog][:content], 
             user_id: current_user.id)
-            redirect_to new_blog_path
+            redirect_to blog_path
         end
     end
 
     def index
         @blogs = Blog.all
-        @user = User.all
     end
 
     def update
@@ -42,8 +41,8 @@ class BlogsController < ApplicationController
     end
 
     def show
-        @blog = Blog.find(blog_params) 
-        @user = User.find(id:blog.user_id)
+        @blog = Blog.find(params[:id]) 
+        #@user = User.find(id:blog.user_id)
     end
 
     def confirm
@@ -52,6 +51,6 @@ class BlogsController < ApplicationController
 
     private
     def blog_params
-      params.require(:blog).permit(:blog_image, :content, :image_cache, :user_id)
+      params.require(:blog).permit(:blog_image, :content, :image_cache, :user_id, :image)                         
     end
 end
