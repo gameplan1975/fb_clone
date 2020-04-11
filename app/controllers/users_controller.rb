@@ -13,8 +13,10 @@ class UsersController < ApplicationController
     def index
     end
     def update
+        @user = User.find(params[:id])
     end
     def edit
+        @user = User.find(params[:id])
     end
     def destroy
     end

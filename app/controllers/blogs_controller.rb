@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
         else
             Blog.create(blog_image: params[:blog][:blog_image], content: params[:blog][:content], 
             user_id: current_user.id)
-            redirect_to blog_path
+            redirect_to new_blog_path
         end
     end
 
@@ -46,7 +46,7 @@ class BlogsController < ApplicationController
     end
 
     def confirm
-        @blog = Blog.new(blog_params)
+        @blog = Blog.new(blog_params)      
     end
 
     private
